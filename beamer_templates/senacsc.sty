@@ -1,0 +1,146 @@
+% Pré-requisitos
+\NeedsTeXFormat{LaTeX2e}
+
+% Utilizado em projetos com \usepackage{senaisc}
+\ProvidesPackage{senaisc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Importação de pacotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Fontes T1
+\RequirePackage[T1]{fontenc}
+% Condificação de carateres de entrada
+\RequirePackage[utf8]{inputenc}
+% I18N
+\RequirePackage[brazil]{babel}
+% Recursos de texto
+\RequirePackage{textcomp}
+\RequirePackage{lmodern}
+% Recursos de cores
+\RequirePackage{xcolor}
+% Recursos de rótulos de figuras e tabelas
+\RequirePackage{caption}
+% Recursos para tabelas
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{multirow}
+% Recursos para código-fonte
+\RequirePackage{listings}
+% Recursos de colunas
+\RequirePackage{multicol}
+% Recursos de rótulos de figuras e tabelas
+\RequirePackage[labelformat=empty]{caption}
+% Recursos de símbolos
+\RequirePackage{pifont}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurações
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Definição de cores
+\definecolor{senacblue}{HTML}{004171}
+\definecolor{senacorange}{HTML}{ff9900}
+
+% Gráficos
+\graphicspath{
+ {../fig/}
+}
+\DeclareGraphicsExtensions{
+ .pdf,
+ .jpg,
+ .png,
+ .jpeg
+}
+
+% Legendas de figuras e tabelas
+\captionsetup{labelformat=empty}
+
+% Código-fonte
+\lstset{
+basicstyle=\ttfamily\small,
+columns=fullflexible,
+keepspaces=true,
+showstringspaces=false,
+breaklines=true,
+breakatwhitespace=true,
+postbreak=\mbox{\textcolor{black}{$\hookrightarrow$}\space},
+belowskip=0pt,
+aboveskip=0pt,
+upquote=true,
+literate=
+ {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+{À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+{Ã}{{\~A}}1 {ã}{{\~a}}1 {Õ}{{\~O}}1 {õ}{{\~o}}1
+{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+}
+
+% Aparência dos slides
+\usetheme{Madrid}
+\usecolortheme{whale}
+\colorlet{beamer@blendedblue}{senacblue}
+\setbeamercolor*{palette tertiary}{bg=senacorange, fg=senacblue}
+\setbeamercolor*{author in head/foot}{parent=palette secondary}
+\setbeamercolor*{title in head/foot}{parent=palette primary}
+\setbeamercolor*{date in head/foot}{parent=palette tertiary}
+\setbeamercolor*{block title example}{parent=palette tertiary}
+\beamertemplatenavigationsymbolsempty
+
+% Templates Beamer
+\setbeamertemplate{wrapper}{
+ \begin{frame}[noframenumbering,plain]
+  \titlepage
+ \end{frame}
+}
+
+% Macros
+\AtBeginDocument{
+ \usebeamertemplate{wrapper}
+}
+
+\AtEndDocument{
+ \usebeamertemplate{wrapper}
+}
+
+\AtBeginSection{
+ \begin{frame}[noframenumbering]{Sumário}
+  \tableofcontents[currentsection,hideothersubsections]
+ \end{frame}
+}
+
+\AtBeginSubsection{
+ \begin{frame}[noframenumbering]{Sumário}
+  \tableofcontents[
+   currentsection,
+   currentsubsection,
+   subsectionstyle=show/shaded/hide
+  ]
+ \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandos personalizados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Primeiro slide de sumário
+\newcommand{\toc}{
+ \begin{frame}{Sumário}
+  \tableofcontents[hideallsubsections]
+ \end{frame}
+}
+\newcommand{\inframehi}[1]{\textbf{\Large #1}}
+\newcommand{\inframehii}[1]{\textbf{\large #1}}
+
+% Símbolos
+\newcommand{\cmk}{\ding{51}}                 % checkmark
+\newcommand{\xmk}{\ding{55}}                 % x no mesmo estilo que checkmark

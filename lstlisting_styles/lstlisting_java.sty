@@ -1,0 +1,40 @@
+% Pré-requisitos
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lstlisting_java}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Importação de pacotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Recursos para código-fonte
+\RequirePackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurações
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{javared}{rgb}{0.6, 0, 0} % para strings
+\definecolor{javagreen}{rgb}{0.25, 0.5, 0.35} % para comentários
+\definecolor{javapurple}{rgb}{0.5, 0, 0.35} % para palavras-chave
+\definecolor{javadocblue}{rgb}{0.25, 0.35, 0.75} % para javadoc
+
+\lstdefinelanguage{JavaEclipse}[]{Java}{
+  morekeywords={enum},
+  keywordstyle=\color{javapurple}\bfseries,
+  stringstyle=\color{javared},
+  commentstyle=\color{javagreen},
+  morecomment=[s][\color{javadocblue}]{/**}{*/},
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  numbersep=10pt,
+  xleftmargin=0.5cm
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandos personalizados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tipografia
+\newcommand{\javakeyword}[1]{\textbf{\texttt{\textcolor{javapurple}{#1}}}}
+\newcommand{\javastring}[1]{\texttt{\textcolor{javared}{#1}}}

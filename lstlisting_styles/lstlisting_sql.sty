@@ -1,0 +1,36 @@
+% Pré-requisitos
+\NeedsTeXFormat{LaTeX2e}
+
+\ProvidesPackage{lstlisting_sql}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Importação de pacotes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Recursos para código-fonte
+\RequirePackage{listings}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Configurações
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{codered}{rgb}{0.6, 0, 0} % para strings
+\definecolor{codegreen}{rgb}{0.25, 0.5, 0.35} % para comentários
+\definecolor{codeblue}{rgb}{0.25, 0.35, 0.75} % para palavras-chave
+
+\lstdefinelanguage{SQLColor}[]{SQL}{
+  morekeywords={SCHEMA, REFERENCES, AUTO_INCREMENT, CHANGE, MODIFY, RENAME, TO,
+    TRUNCATE, XOR, IS, MINUS},
+  keywordstyle=\color{codeblue}\bfseries,
+  stringstyle=\color{codered},
+  commentstyle=\color{codegreen},
+  escapeinside={(*@}{@*)}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Comandos personalizados
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Tipografia
+\newcommand{\sqlkeyword}[1]{\textbf{\texttt{\textcolor{codeblue}{#1}}}}
+\newcommand{\sqlstring}[1]{\texttt{\textcolor{codered}{#1}}}
